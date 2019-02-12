@@ -18,6 +18,8 @@ public class controler {
 	private Label name;
 	@FXML
 	private Label rez;
+	@FXML
+	private Label crowCount;
 	
 
 	//
@@ -33,6 +35,7 @@ public class controler {
 	public void changeWB(ActionEvent event) {// changes the imadge to black and white
 		WritableImage wb = imadgeGenerator.blackWhiteGen();
 		image.setImage(wb);// changes image
+		crowCount.setText("Crow Cont:"+ flock.numberOfCrows());
 	}
 	
 	@FXML
