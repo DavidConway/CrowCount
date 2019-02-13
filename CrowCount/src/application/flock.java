@@ -49,50 +49,7 @@ public class flock {
 			}
 		}
 	}
-	/*private static void checkUp(crowPixel pixel) {
-		String findKey = ("x"+(pixel.pixelX)+"y"+(pixel.pixelY-1)).toString();
-		crowPixel check;
-		
-		try {
-			check = crowDisjointSet.get(findKey);
-		} catch (Exception e) {
-			check = null;
-		}
-		
-		if(check != null) {
-			if(check.parent == null) {
-				check.parent = pixel;
-			}
-			else {
-				pixel.parent = check;
-			}
-		System.out.println(" UP"+findKey);
-		}
-		
-		
-	}
 	
-	private static void checkLeft(crowPixel pixel) {
-		String findKey = ("x"+(pixel.pixelX-1)+"y"+(pixel.pixelY)).toString();
-		crowPixel check;
-		
-		try {
-			check = crowDisjointSet.get(findKey);
-		} catch (Exception e) {
-			check = null;
-		}
-		
-		if(check != null) {
-			if(check.parent == null) {
-				check.parent = pixel;
-			}
-			else if(check.parent == null){
-				pixel.parent = check;
-			}
-		System.out.println(" Left"+findKey);
-		}
-		
-	}*/
 
 	public static int numberOfCrows() {
 	//	Hashtable<String, crowPixel > test =crowDisjointSet;
