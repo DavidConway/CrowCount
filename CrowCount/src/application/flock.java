@@ -10,7 +10,6 @@ public class flock {
 	public static void addPixel(int x, int y) {
 		crowPixel newPixel = new crowPixel(x,y);// creats a new crow pixel
 		String key = ("x"+x+"y"+y).toString();
-		System.out.println(key);//generats a hash to use
 		crowDisjointSet.put(key, newPixel);// adds the pixel to the hash table
 		keyList.add(key);// adds the flocks list of keys
 		//checkUp(newPixel);
@@ -73,7 +72,10 @@ public class flock {
 					cheking = cheking.parent;
 				}
 				current.parent = cheking;
-			}	
+			}
+			else {
+				box.listPfBoxes.add(new box(current));
+			}
 		}	
 	}
 }

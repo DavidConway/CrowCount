@@ -97,7 +97,7 @@
 						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<Label fx:id="name" alignment="CENTER" contentDisplay="CENTER" prefHeight="187.0" prefWidth="436.0" text="Name" textAlignment="CENTER" textOverrun="CLIP">
+						<Label fx:id="name" alignment="CENTER" contentDisplay="CENTER" prefHeight="187.0" prefWidth="436.0" text="llllllllllll" textAlignment="CENTER" textOverrun="CLIP">
 							<font>
 								<Font size="24.0" />
 							</font>
@@ -124,11 +124,19 @@
                   </Label>
 					</children>
 				</GridPane>
-				<ImageView fx:id="image" fitHeight="1080.0" fitWidth="1152.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-					<viewport>
-						<Rectangle2D />
-					</viewport>
-				</ImageView>
+            <StackPane fx:id="stack" alignment="TOP_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" scaleShape="false" StackPane.alignment="TOP_LEFT">
+                     <children>
+                  				<ImageView fx:id="image" fitHeight="1056.0" fitWidth="1153.0" preserveRatio="true">
+                  					<viewport>
+                  						<Rectangle2D />
+                  					</viewport>
+                  				</ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
 			</children>
 		</GridPane>
 		<MenuBar>

@@ -35,9 +35,12 @@ public class imadgeGenerator {
 
 			}
 		}
+		flock.flaten();
+		wb = box.addBoxes(wb);
 		return wb;
 		
 		
 	}
+	
 
 }
