@@ -42,13 +42,15 @@ public class controler {
 		WritableImage wb = imadgeGenerator.blackWhiteGen();
 		image.setImage(wb);// changes image
 		
-		double xScale = pane.getWidth()/wb.getWidth();
+		/*double xScale = pane.getWidth()/wb.getWidth();
 		double yScale = pane.getHeight()/wb.getHeight();
 		Rectangle rect = new Rectangle(20*xScale,20*yScale,Color.TRANSPARENT);
 		rect.setStroke(Color.RED);
-		rect.setStrokeWidth(xScale);
-		stack.getChildren().add(rect);
-		
+		rect.setStrokeWidth(5);
+		rect.setTranslateX(50);
+		rect.setTranslateY(50);
+		pane.getChildren().add(rect);*/
+		box.addBoxes(stack);
 		
 		crowCount.setText("Crow Cont:"+ flock.numberOfCrows());
 		int numberOfBoxes = 0;

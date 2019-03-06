@@ -3,7 +3,10 @@ package application;
 import java.util.ArrayList;
 
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 public class box {
 	public int topX = 10000,topY=10000,bottomX=0,bottomY=0,num=0;;
@@ -35,24 +38,21 @@ public class box {
 		}
 	}
 	
-	static WritableImage addBoxes( WritableImage image) {
+	static void addBoxes( StackPane pane) {
+		
+		
+		double Scale = pane.getWidth()/fileLoader.loadedImage.getWidth();
+		
 		for(box box: listPfBoxes) {
 			box.getxys();
 			int width = box.bottomX - box.topX;
 			int height = box.bottomY - box.topY;
-			for(int x = box.topX; x<=box.topX+width;x++) {
-				image.getPixelWriter().setColor(x, box.topY, Color.BLUE);
-			}
-			for(int x = box.topX; x<=box.topX+width;x++) {
-				image.getPixelWriter().setColor(x, box.bottomY, Color.BLUE);
-			}
-			for(int y = box.topY; y<=box.topY+height;y++) {
-				image.getPixelWriter().setColor(box.topX, y, Color.BLUE);
-			}
-			for(int y = box.topY; y<=box.topY+height;y++) {
-				image.getPixelWriter().setColor(box.bottomX, y, Color.BLUE);
-			}	
+			Rectangle rect = new Rectangle(width*Scale,height*Scale,Color.TRANSPARENT);
+			rect.setStroke(Color.RED);
+			rect.setStrokeWidth(5);
+			rect.setTranslateX(box.topX*Scale);
+			rect.setTranslateY(box.topY*Scale);
+			pane.getChildren().add(rect);
 		}
-		return image;
 	}
 }
