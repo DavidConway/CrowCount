@@ -124,17 +124,13 @@
                   </Label>
 					</children>
 				</GridPane>
-            <StackPane fx:id="stack" alignment="TOP_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <StackPane fx:id="stack" alignment="TOP_LEFT" GridPane.columnIndex="1">
                <children>
-                  <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="TOP_LEFT">
-                     <children>
-                  				<ImageView fx:id="image" fitHeight="1056.0" fitWidth="1153.0" preserveRatio="true">
-                  					<viewport>
-                  						<Rectangle2D />
-                  					</viewport>
-                  				</ImageView>
-                     </children>
-                  </Pane>
+            				<ImageView fx:id="image" fitHeight="1056.0" fitWidth="1153.0" preserveRatio="true">
+            					<viewport>
+            						<Rectangle2D />
+            					</viewport>
+            				</ImageView>
                </children>
             </StackPane>
 			</children>

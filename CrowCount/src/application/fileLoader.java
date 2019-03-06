@@ -13,7 +13,7 @@ public class fileLoader {
 	
 	public static void loadFile() {
 		FileChooser fc = new FileChooser();
-		fc.getExtensionFilters().add(new ExtensionFilter("image", "*.jpg", "*.png"));
+		fc.getExtensionFilters().add(new ExtensionFilter("image", "*.jpg", "*.png","*.jpeg"));
 		selectedImage = fc.showOpenDialog(null);
 		if (fc != null) {
 			loadedImage = new Image(selectedImage.toURI().toString());

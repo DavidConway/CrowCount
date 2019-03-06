@@ -51,7 +51,6 @@ public class flock {
 	
 
 	public static int numberOfCrows() {
-	//	Hashtable<String, crowPixel > test =crowDisjointSet;
 		int crowCount = 0;
 		for(String key: keyList) {
 			if(crowDisjointSet.get(key).parent==null) {//for every root pixel the crow count is incramented

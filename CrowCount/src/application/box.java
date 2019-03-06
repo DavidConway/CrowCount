@@ -2,6 +2,9 @@ package application;
 
 import java.util.ArrayList;
 
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -9,8 +12,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class box {
-	public int topX = 10000,topY=10000,bottomX=0,bottomY=0,num=0;;
+	public double topX = fileLoader.loadedImage.getWidth()+1;
+	public double topY = fileLoader.loadedImage.getHeight()+1;
+	public int bottomX,bottomY,num=0;;
 	static ArrayList<box> listPfBoxes = new ArrayList<box>();
+	static int numberOfCrows = 0;
 	crowPixel root;
 	box(crowPixel rootPix){
 		root = rootPix;
@@ -38,21 +44,41 @@ public class box {
 		}
 	}
 	
-	static void addBoxes( StackPane pane) {
-		
-		
-		double Scale = pane.getWidth()/fileLoader.loadedImage.getWidth();
+	public static void addBoxes( StackPane Pane, ImageView image) {
+		double Scale;
+		numberOfCrows = 0;
+		if(image.getImage().getHeight()>image.getImage().getWidth()) {
+			Scale = (image.getFitHeight())/(image.getImage().getHeight());	
+		}
+		else {
+			Scale = (image.getFitWidth())/(image.getImage().getWidth());
+		}
 		
 		for(box box: listPfBoxes) {
+			
 			box.getxys();
-			int width = box.bottomX - box.topX;
-			int height = box.bottomY - box.topY;
+			double width = box.bottomX - box.topX+1;
+			double height = box.bottomY - box.topY+1;
+			double X = box.topX*Scale;
+			double H =Scale;
+			double Y = box.topY*Scale;
+			
 			Rectangle rect = new Rectangle(width*Scale,height*Scale,Color.TRANSPARENT);
 			rect.setStroke(Color.RED);
 			rect.setStrokeWidth(5);
-			rect.setTranslateX(box.topX*Scale);
-			rect.setTranslateY(box.topY*Scale);
-			pane.getChildren().add(rect);
+			rect.setTranslateX(X);
+			rect.setTranslateY(Y);
+			Pane.getChildren().add(rect);
+			System.out.println(" topX:"+box.topX+" topY:"+box.topY+" bottomX:"+box.bottomX+" bottomY:"+box.bottomY);
+			
+			Label num = new Label(""+ ++numberOfCrows );
+			num.setTextFill(Color.GREEN);
+			num.setStyle("-fx-font: 24 arial;");
+			num.setTranslateY(Y); 
+			num.setTranslateX(X); //<<== if uncomented will display numbers but freze afterwirds 
+			Pane.getChildren().add(num);
+
+
 		}
 	}
 }
