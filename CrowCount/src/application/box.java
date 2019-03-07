@@ -20,7 +20,6 @@ public class box {
 	crowPixel root;
 	box(crowPixel rootPix){
 		root = rootPix;
-		getxys();
 	}
 	
 	
@@ -31,13 +30,13 @@ public class box {
 				if(cheking.pixelX < topX) {
 					topX = cheking.pixelX;
 				}
-				else if(cheking.pixelX > bottomX) {
+				if(cheking.pixelX > bottomX) {
 					bottomX = cheking.pixelX;
 				}
 				if(cheking.pixelY < topY) {
 					topY = cheking.pixelY;
 				}
-				else if(cheking.pixelY > bottomY) {
+				if(cheking.pixelY > bottomY) {
 					bottomY = cheking.pixelY;
 				}
 			}
