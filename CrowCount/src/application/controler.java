@@ -7,13 +7,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Box;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 
 public class controler {
 	WritableImage wb;
@@ -64,7 +59,7 @@ public class controler {
 	}
 
 	@FXML
-	void openFileClick(ActionEvent event) {
+	public void openFileClick(ActionEvent event) {
 		stack.getChildren().clear();
 		stack.getChildren().add(image);
 		fileLoader.loadFile();
@@ -77,7 +72,7 @@ public class controler {
 	}
 	
 	@FXML
-	void sliderMoved(MouseEvent event) {
+	public void sliderMoved(MouseEvent event) {
 		stack.getChildren().clear();
 		stack.getChildren().add(image);
 		if(image.getImage().equals(wb)) {

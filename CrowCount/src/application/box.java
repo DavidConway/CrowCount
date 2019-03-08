@@ -3,42 +3,40 @@ package application;
 import java.util.ArrayList;
 
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class box {
-	public double topX = fileLoader.loadedImage.getWidth()+1;
-	public double topY = fileLoader.loadedImage.getHeight()+1;
-	public int bottomX,bottomY,num=0;;
+	
+	private double topX = fileLoader.loadedImage.getWidth()+1;
+	private double topY = fileLoader.loadedImage.getHeight()+1;
+	private int bottomX,bottomY,num=0;
 	static ArrayList<box> listPfBoxes = new ArrayList<box>();
 	static int numberOfCrows = 0;
 	private int numberOfPixels=1;
-	crowPixel root;
-	box(crowPixel rootPix){
+	private crowPixel root;
+	
+	public box(crowPixel rootPix){
 		root = rootPix;
 	}
-	
 	
 	public void getxys() {
 		for(String key: flock.keyList) {
 			crowPixel cheking = flock.crowDisjointSet.get(key);
 			if(cheking.getParent() == root) {// <========= Find if elament of set
-				if(cheking.pixelX < topX) {
-					topX = cheking.pixelX;
+				if(cheking.getPixelX() < topX) {
+					topX = cheking.getPixelX();
 				}
-				if(cheking.pixelX > bottomX) {
-					bottomX = cheking.pixelX;
+				if(cheking.getPixelX() > bottomX) {
+					bottomX = cheking.getPixelX();
 				}
-				if(cheking.pixelY < topY) {
-					topY = cheking.pixelY;
+				if(cheking.getPixelY() < topY) {
+					topY = cheking.getPixelY();
 				}
-				if(cheking.pixelY > bottomY) {
-					bottomY = cheking.pixelY;
+				if(cheking.getPixelY() > bottomY) {
+					bottomY = cheking.getPixelY();
 				}
 			numberOfPixels++;
 			}
@@ -107,4 +105,37 @@ public class box {
 			
 		}
 	}
+	
+	public double getTopX() {
+		return topX;
+	}
+	public void setTopX(double topX) {
+		this.topX = topX;
+	}
+	public double getTopY() {
+		return topY;
+	}
+	public void setTopY(double topY) {
+		this.topY = topY;
+	}
+	public int getBottomX() {
+		return bottomX;
+	}
+	public void setBottomX(int bottomX) {
+		this.bottomX = bottomX;
+	}
+	public int getBottomY() {
+		return bottomY;
+	}
+	public void setBottomY(int bottomY) {
+		this.bottomY = bottomY;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 }
+
+

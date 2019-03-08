@@ -16,10 +16,9 @@ public class flock {
 		
 	}
 	
-	static private void addLinks(crowPixel pixel) {
-		crowPixel check;//stors the curent pixel being cheked for linkage
-		String upKey = ("x"+(pixel.pixelX)+"y"+(pixel.pixelY-1)).toString();// figers out what a pixel aboves key whould be
-		String leftKey = ("x"+(pixel.pixelX-1)+"y"+(pixel.pixelY)).toString();//figers out what a pixel aboves key whould be
+	private static void addLinks(crowPixel pixel) {
+		String upKey = ("x"+(pixel.getPixelX())+"y"+(pixel.getPixelY()-1)).toString();// figers out what a pixel aboves key whould be
+		String leftKey = ("x"+(pixel.getPixelX()-1)+"y"+(pixel.getPixelY())).toString();//figers out what a pixel aboves key whould be
 		crowPixel up = crowDisjointSet.get(upKey);
 		crowPixel left = crowDisjointSet.get(leftKey);
 		
@@ -59,7 +58,7 @@ public class flock {
 			}
 		}
 	}
-	
+
 	
 	public static void flaten() {
 		box.listPfBoxes =  new ArrayList<box>();
@@ -80,11 +79,5 @@ public class flock {
 				box.listPfBoxes.add(new box(current));
 			}
 		}	
-	}
-	public static void check() {
-		for (String key: keyList) {
-			crowPixel current = crowDisjointSet.get(key);
-			System.out.println(current.pixelX+" "+ current.pixelY);
-		}
 	}
 }

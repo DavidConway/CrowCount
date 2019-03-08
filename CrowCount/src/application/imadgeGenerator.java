@@ -7,11 +7,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 public class imadgeGenerator {
-	 private static double treshold = 0.5;
-
-
-
-	public static WritableImage blackWhiteGen(double tres) {
+	 public static WritableImage blackWhiteGen(double tres) {
 		int width = (int) fileLoader.loadedImage.getWidth();// gets image width
 		int height = (int) fileLoader.loadedImage.getHeight();// gets image height
 		flock.crowDisjointSet = new Hashtable<String, crowPixel>();
