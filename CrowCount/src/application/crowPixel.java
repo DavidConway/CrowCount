@@ -2,7 +2,7 @@ package application;
 
 public class crowPixel {
 	int pixelX,pixelY;
-	crowPixel parent = null;
+	private crowPixel parent = null;
 
 	public crowPixel(int x, int y) {
 		this.pixelX=x;
@@ -16,6 +16,15 @@ public class crowPixel {
 	
 	public crowPixel getParent() {
 		return this.parent;
+	}
+	
+	public void attachToRoot(crowPixel node) {
+		while(node.getParent() != null) {
+			node = node.getParent();
+		}
+		if(node != this) {
+			this.setParent(node);
+		}
 	}
 	
 }

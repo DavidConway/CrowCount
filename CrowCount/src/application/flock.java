@@ -12,8 +12,6 @@ public class flock {
 		String key = ("x"+x+"y"+y).toString();
 		crowDisjointSet.put(key, newPixel);// adds the pixel to the hash table
 		keyList.add(key);// adds the flocks list of keys
-		//checkUp(newPixel);
-		//checkLeft(newPixel);
 		addLinks(newPixel);//trys to link the pixel into the set
 		
 	}
@@ -22,59 +20,71 @@ public class flock {
 		crowPixel check;//stors the curent pixel being cheked for linkage
 		String upKey = ("x"+(pixel.pixelX)+"y"+(pixel.pixelY-1)).toString();// figers out what a pixel aboves key whould be
 		String leftKey = ("x"+(pixel.pixelX-1)+"y"+(pixel.pixelY)).toString();//figers out what a pixel aboves key whould be
-		if(crowDisjointSet.get(upKey) != null) {//if there is a usabule pixel above
-			check = crowDisjointSet.get(upKey);// sets check to the above pixel
-			if(check.parent == null) { //if the above pixel needs a perent the curent pixel becomes its perent otherwise it becomes the curent pixels perent
-				check.parent = pixel;
+		crowPixel up = crowDisjointSet.get(upKey);
+		crowPixel left = crowDisjointSet.get(leftKey);
+		
+		if(up != null && left != null) {
+			if(up.getParent() == null) {
+				up.attachToRoot(pixel);
 			}
-			else {
-				pixel.parent = check;
+			if(left.getParent() == null) {
+				left.attachToRoot(pixel);
 			}
 			
-			if(crowDisjointSet.get(leftKey) != null) { //if the pixel to the left needs a perent the curent pixel becomes its perent
-				check = crowDisjointSet.get(leftKey);
-				if(check.parent == null) {
-					check.parent = pixel;
+			if(pixel.getParent() == null) {
+				if(left.getParent() != pixel) {
+					pixel.attachToRoot(left);
+				}
+				else if(up.getParent() != pixel){
+					pixel.attachToRoot(up);
 				}
 			}
 		}
-		else if(crowDisjointSet.get(leftKey) != null) {// if there is no pixel above it dose the same but for the left pixel insted
-			check = crowDisjointSet.get(leftKey);
-			if(check.parent == null) {
-				check.parent = pixel;
+		
+		else if(left != null) {
+			if(left.getParent() == null) {
+				left.attachToRoot(pixel);
 			}
-			else{
-				pixel.parent = check;
+			else {
+				pixel.attachToRoot(left);
+			}
+		}
+		
+		else if(up != null) {
+			if(up.getParent() == null) {
+				up.attachToRoot(pixel);
+			}
+			else {
+				pixel.attachToRoot(up);
 			}
 		}
 	}
 	
-
-	public static int numberOfCrows() {
-		int crowCount = 0;
-		for(String key: keyList) {
-			if(crowDisjointSet.get(key).parent==null) {//for every root pixel the crow count is incramented
-			crowCount++;	
-			}
-		}
-		return crowCount;
-		
-	}
 	
 	public static void flaten() {
+		box.listPfBoxes =  new ArrayList<box>();
 		for (String key: keyList) {
 			crowPixel current = crowDisjointSet.get(key);
 			crowPixel cheking;
-			if(current.parent != null) {
-				cheking = current.parent; 
-				while (cheking.parent!=null) {
-					cheking = cheking.parent;
+			if(current.getParent() != null) {
+				cheking = current.getParent(); 
+				while (cheking.getParent()!=null) {
+					
+					cheking = cheking.getParent();
+					//System.out.println(cheking.pixelX+" "+ cheking.pixelY);
 				}
-				current.parent = cheking;
+				
+				current.setParent(cheking);;
 			}
 			else {
 				box.listPfBoxes.add(new box(current));
 			}
 		}	
+	}
+	public static void check() {
+		for (String key: keyList) {
+			crowPixel current = crowDisjointSet.get(key);
+			System.out.println(current.pixelX+" "+ current.pixelY);
+		}
 	}
 }

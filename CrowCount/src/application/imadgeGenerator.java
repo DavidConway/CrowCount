@@ -7,15 +7,16 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 public class imadgeGenerator {
-	public static double treshold = 0.5;
+	 private static double treshold = 0.5;
 
 
 
-	public static WritableImage blackWhiteGen() {
+	public static WritableImage blackWhiteGen(double tres) {
 		int width = (int) fileLoader.loadedImage.getWidth();// gets image width
 		int height = (int) fileLoader.loadedImage.getHeight();// gets image height
 		flock.crowDisjointSet = new Hashtable<String, crowPixel>();
 		flock.keyList = new ArrayList<String>();
+		
 
 		WritableImage wb = new WritableImage(width, height);// Creates a blank image to be written to
 
@@ -24,7 +25,7 @@ public class imadgeGenerator {
 
 				Color color = fileLoader.loadedImage.getPixelReader().getColor(x, y);// gets the original color of the pixel
 				Color newColor = color.grayscale();// grayscale's it
-				if(newColor.getRed()<treshold) {
+				if(newColor.getRed()<tres) {
 					newColor = new Color(0,0,0,1);
 					flock.addPixel(x, y);
 				}
