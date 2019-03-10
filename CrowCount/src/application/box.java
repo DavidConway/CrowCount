@@ -13,6 +13,7 @@ public class box {
 	private double topX = fileLoader.loadedImage.getWidth()+1;
 	private double topY = fileLoader.loadedImage.getHeight()+1;
 	private int bottomX,bottomY,num=0;
+	public static String matchTo;
 	static ArrayList<box> listPfBoxes = new ArrayList<box>();
 	static int numberOfCrows = 0;
 	private int numberOfPixels=1;
@@ -44,6 +45,13 @@ public class box {
 	}
 	
 	public static void addBoxes( StackPane Pane, ImageView image ,double trigg,double lowEndTrig) {
+		
+		//testing
+		//trigg = 500;
+		//lowEndTrig = 500;
+		matchTo = trigg+" "+lowEndTrig+" ";
+		//
+		
 		double Scale;
 		numberOfCrows = 0;
 		Pane.getChildren().clear();
@@ -102,8 +110,9 @@ public class box {
 			num.setTranslateX(X); //<<== if uncomented will display numbers but freze afterwirds 
 			Pane.getChildren().add(rect);
 			Pane.getChildren().add(num);
-			
+			matchTo = matchTo+(" "+box.topX+" "+box.topY+" "+box.bottomX+" "+box.bottomY);
 		}
+		System.out.println(matchTo.hashCode());
 	}
 	
 	public double getTopX() {
