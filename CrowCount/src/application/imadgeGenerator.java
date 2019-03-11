@@ -7,7 +7,12 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 public class imadgeGenerator {
+	 public static String matchTo = null;
 	 public static WritableImage blackWhiteGen(double sens) {
+		 //test//
+		 //sens = 0.9;
+		 matchTo = "";
+
 		int width = (int) fileLoader.loadedImage.getWidth();// gets image width
 		int height = (int) fileLoader.loadedImage.getHeight();// gets image height
 		flock.crowDisjointSet = new Hashtable<String, crowPixel>();
@@ -24,6 +29,8 @@ public class imadgeGenerator {
 				if(newColor.getRed()<sens) {
 					newColor = new Color(0,0,0,1);
 					flock.addPixel(x, y);
+					System.out.println(x+""+y);
+					matchTo = matchTo+(x+""+y);
 				}
 				else {
 					newColor = new Color(1,1,1,1);
@@ -32,6 +39,7 @@ public class imadgeGenerator {
 
 			}
 		}
+		System.out.println(matchTo.hashCode());
 		flock.flaten();
 		return wb;
 		

@@ -112,7 +112,7 @@ public class box {
 			Pane.getChildren().add(num);
 			matchTo = matchTo+(" "+box.topX+" "+box.topY+" "+box.bottomX+" "+box.bottomY);
 		}
-		System.out.println(matchTo.hashCode());
+		//System.out.println(matchTo.hashCode());
 	}
 	
 	public double getTopX() {

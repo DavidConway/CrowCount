@@ -63,13 +63,6 @@ public class TestCases {
 		assertEquals(-2142350376,box.matchTo.hashCode());
 	}
 	
-	@Test
-	public void addBoxesMidEndTrig() {
-		
-		imadgeGenerator.blackWhiteGen(0.5);
-		box.addBoxes(testPane, testImageView, 500, 500);
-		assertEquals(1024433236,box.matchTo.hashCode());
-	}
 	
 	@Test
 	public void addBoxesHighEndTrig() {
@@ -77,6 +70,24 @@ public class TestCases {
 		imadgeGenerator.blackWhiteGen(0.5);
 		box.addBoxes(testPane, testImageView, 500, 999);
 		assertEquals(-1838034000,box.matchTo.hashCode());
+	}
+	
+	@Test
+	public void blackWhiteGenLowSens() {
+		imadgeGenerator.blackWhiteGen(0.1);
+		assertEquals(-1470641087,imadgeGenerator.matchTo.hashCode());
+	}
+	
+	@Test
+	public void blackWhiteGenMidSens() {
+		imadgeGenerator.blackWhiteGen(0.5);
+		assertEquals(711149567,imadgeGenerator.matchTo.hashCode());
+	}
+	
+	@Test
+	public void blackWhiteGenHighSens() {
+		imadgeGenerator.blackWhiteGen(0.9);
+		assertEquals(-388362807,imadgeGenerator.matchTo.hashCode());
 	}
 
 }
