@@ -48,7 +48,7 @@ public class box {
 		
 		//testing
 		//trigg = 500;
-		//lowEndTrig = 500;
+		//lowEndTrig = 999;
 		matchTo = trigg+" "+lowEndTrig+" ";
 		//
 		
