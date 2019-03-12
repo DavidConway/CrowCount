@@ -89,6 +89,7 @@ public class box {
 				num.setText("ERROR");
 				num.setTextFill(Color.GREEN);
 			}
+			else
 			 {
 				rect.setStroke(Color.BLUE);
 				numberOfCrows++;

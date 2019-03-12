@@ -15,7 +15,7 @@ public class Main extends Application {
 
 			try {
 				root = FXMLLoader.load(getClass().getResource("interface.fxml"));
-				 Scene scene = new Scene(root, 300, 275);
+				 Scene scene = new Scene(root, 1920, 1080);
 			        primaryStage.setScene(scene);
 			        primaryStage.show();    
 			} 
