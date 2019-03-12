@@ -16,7 +16,7 @@ public class box {
 	public static String matchTo;
 	static ArrayList<box> listPfBoxes = new ArrayList<box>();
 	static int numberOfCrows = 0;
-	private int numberOfPixels=1;
+	private int numberOfPixels=1; //count the root at start
 	private crowPixel root;
 	
 	public box(crowPixel rootPix){
@@ -47,21 +47,18 @@ public class box {
 	public static void addBoxes( StackPane Pane, ImageView image ,double trigg,double lowEndTrig) {
 		
 		//testing
-		//trigg = 500;
-		//lowEndTrig = 999;
-		matchTo = trigg+" "+lowEndTrig+" ";
+			//trigg = 500;
+			//lowEndTrig = 999;
+			matchTo = trigg+" "+lowEndTrig+" ";
 		//
 		
 		double Scale;
 		numberOfCrows = 0;
 		Pane.getChildren().clear();
 		Pane.getChildren().add(image);
-		if(image.getImage().getHeight()>image.getImage().getWidth()) {
-			Scale = (image.getFitHeight())/(image.getImage().getHeight());	
-		}
-		else {
-			Scale = (image.getFitWidth())/(image.getImage().getWidth());
-		}
+		
+		Scale = findScale(image);
+		
 		
 		for(box box: listPfBoxes) {
 			
@@ -92,7 +89,7 @@ public class box {
 				num.setText("ERROR");
 				num.setTextFill(Color.GREEN);
 			}
-			else {
+			 {
 				rect.setStroke(Color.BLUE);
 				numberOfCrows++;
 				num.setText(""+numberOfCrows);
@@ -100,7 +97,7 @@ public class box {
 			}
 			
 			rect.setStrokeWidth(5);
-			rect.setTranslateX(X);
+			rect.setTranslateX(X);//sets the size and position of box
 			rect.setTranslateY(Y);
 			
 			//System.out.println(" topX:"+box.topX+" topY:"+box.topY+" bottomX:"+box.bottomX+" bottomY:"+box.bottomY);
@@ -115,6 +112,15 @@ public class box {
 		//System.out.println(matchTo.hashCode());
 	}
 	
+	private static double findScale(ImageView image) {
+		if(image.getImage().getHeight()>image.getImage().getWidth()) {
+			return (image.getFitHeight())/(image.getImage().getHeight());	
+		}
+		else {
+			return (image.getFitWidth())/(image.getImage().getWidth());
+		}
+	}
+
 	public double getTopX() {
 		return topX;
 	}
